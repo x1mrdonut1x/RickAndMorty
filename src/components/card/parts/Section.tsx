@@ -1,17 +1,18 @@
 import React from "react";
 import styled from "styled-components";
 
-interface SectionProps {
-  title: string;
+interface SectionProps extends React.HTMLAttributes<HTMLDivElement> {
+  title?: string;
 }
 
 export const Section = ({
   title,
   children,
+  ...rest
 }: React.PropsWithChildren<SectionProps>) => {
   return (
-    <StyledSection>
-      <span className="title">{title}</span>
+    <StyledSection {...rest}>
+      {title && <span className="title">{title}</span>}
       <span className="value">{children}</span>
     </StyledSection>
   );
@@ -32,4 +33,3 @@ const StyledSection = styled.div`
     color: rgb(245, 245, 245);
   }
 `;
-

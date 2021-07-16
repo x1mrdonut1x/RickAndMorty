@@ -1,10 +1,10 @@
 export interface Character {
   id: number;
   name: string;
-  status: string;
+  status: "Alive" | "Dead" | "unknown";
   species: string;
   type: string;
-  gender: string;
+  gender: "Female" | "Male" | "unknown";
   origin: URLObject;
   location: URLObject;
   image: string;
@@ -14,6 +14,6 @@ export interface Character {
 }
 
 interface URLObject {
-  name: string;
+  name: string | "unknown";
   url: string;
 }

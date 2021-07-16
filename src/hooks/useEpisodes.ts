@@ -2,8 +2,8 @@ import { useQuery } from "react-query";
 import { Episode } from "../interfaces/Episode";
 import { getEpisodeIds } from "../utils";
 
-export const useEpisodes = (data: string[]) => {
-  const episodeIds = getEpisodeIds(data);
+export const useEpisodes = (episodes?: string[]) => {
+  const episodeIds = getEpisodeIds(episodes);
 
   const episodesQuery = useQuery<Episode[]>(
     ["episodes", episodeIds],
@@ -17,5 +17,9 @@ export const useEpisodes = (data: string[]) => {
     }
   );
 
-  return episodesQuery;
+  let data = episodesQuery.data || [];
+  if (!Array.isArray(episodesQuery.data) && episodesQuery.data != null)
+    data = [episodesQuery.data];
+
+  return { ...episodesQuery, data };
 };

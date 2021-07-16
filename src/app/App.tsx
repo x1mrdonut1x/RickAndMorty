@@ -1,28 +1,24 @@
-import { useState } from "react";
 import { QueryClient, QueryClientProvider } from "react-query";
-import { Character } from "../interfaces/Character";
 import { CharacterProfile, CharacterList } from "../pages";
+import {
+  BrowserRouter as Router,
+  Route,
+  Redirect,
+  Switch,
+} from "react-router-dom";
 
 const queryClient = new QueryClient();
 
 function App() {
-  const [selectedCharacter, setSelectedCharacter] = useState<
-    Character | undefined
-  >();
-  const handleGoToCharacter = (x: Character) => {
-    setSelectedCharacter(x);
-  };
-
   return (
     <QueryClientProvider client={queryClient}>
-      {selectedCharacter ? (
-        <CharacterProfile
-          data={selectedCharacter}
-          onBack={() => setSelectedCharacter(undefined)}
-        />
-      ) : (
-        <CharacterList onGoToCharacter={handleGoToCharacter} />
-      )}
+      <Router>
+        <Switch>
+          <Route path="/characters/:characterId" component={CharacterProfile} />
+          <Route path="/characters" component={CharacterList} />
+          <Redirect from="/" to="/characters" />
+        </Switch>
+      </Router>
     </QueryClientProvider>
   );
 }
