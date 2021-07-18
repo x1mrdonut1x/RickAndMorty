@@ -24,7 +24,7 @@ export const CharacterProfile = () => {
   const locations = useLocations([originId, locationId]);
 
   return (
-    <Grid fluid style={{ margin: "0.75rem 0" }}>
+    <Grid fluid>
       <Row center="xs" middle="xs" style={{ height: "100vh" }}>
         <Col xs={16} md={12} lg={10} xl={8}>
           <Row start="xs">

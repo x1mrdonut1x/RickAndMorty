@@ -33,7 +33,6 @@ export function CharacterList() {
               isLoading
               key={x}
               data={placeholderCharacter}
-              // onClick={() => handleGoToCharacter(character)}
               width="380px"
               height="184px"
             />
