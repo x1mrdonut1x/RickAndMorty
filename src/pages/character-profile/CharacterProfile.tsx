@@ -3,15 +3,14 @@ import { Character } from "../../interfaces/Character";
 import { getLocationId } from "../../utils";
 import { Episodes } from "./parts/Episodes";
 import { Location } from "./parts/Location";
-import { useHistory, useLocation, useParams } from "react-router-dom";
-import { Button } from "../../components";
+import { useLocation, useParams } from "react-router-dom";
 import { Grid, Row, Col } from "react-flexbox-grid";
 import { CharacterCard } from "../../components/character-card/CharacterCard";
+import { Navigation } from "./parts/Navigation";
 
 export const CharacterProfile = () => {
   const { state: characterFromState } = useLocation<Character>();
   const { characterId } = useParams<{ characterId: string }>();
-  const history = useHistory();
 
   const characterQuery = useCharacter(
     characterFromState ? undefined : characterId
@@ -23,10 +22,6 @@ export const CharacterProfile = () => {
 
   const episodes = useEpisodes(character?.episode);
   const locations = useLocations([originId, locationId]);
-
-  const handleGoBack = () => {
-    history.push("");
-  };
 
   return (
     <Grid fluid style={{ margin: "0.75rem 0" }}>
@@ -56,12 +51,7 @@ export const CharacterProfile = () => {
                   />
                 </Col>
                 <Col xs={12} first="xs" last="md">
-                  <Button
-                    onClick={handleGoBack}
-                    style={{ marginBottom: "0.75rem" }}
-                  >
-                    Back
-                  </Button>
+                  <Navigation />
                 </Col>
               </Row>
             </Col>
