@@ -28,7 +28,7 @@ export function CharacterList() {
       style={{ display: "flex", flexWrap: "wrap", justifyContent: "center" }}
     >
       {characterQuery.isLoading
-        ? [...Array(20).keys()].map((x) => (
+        ? [...Array(30).keys()].map((x) => (
             <CharacterCard
               isLoading
               key={x}

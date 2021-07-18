@@ -1,7 +1,7 @@
 export interface Character {
   id: number;
   name: string;
-  status: "Alive" | "Dead" | "unknown";
+  status: StatusType;
   species: string;
   type: string;
   gender: "Female" | "Male" | "unknown";
@@ -17,3 +17,5 @@ interface URLObject {
   name: string | "unknown";
   url: string;
 }
+
+export type StatusType = "Alive" | "Dead" | "unknown";

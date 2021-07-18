@@ -13,7 +13,7 @@ export const Episodes = ({ data, isLoading }: EpisodesProps) => {
 
   if (isLoading)
     return (
-      <>
+      <div style={{ height: "80vh" }}>
         {[...Array(3).keys()].map((x) => (
           <Card
             key={x}
@@ -22,7 +22,7 @@ export const Episodes = ({ data, isLoading }: EpisodesProps) => {
             style={{ margin: "0 0 0.74rem 0" }}
           />
         ))}
-      </>
+      </div>
     );
 
   return (

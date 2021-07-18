@@ -5,11 +5,11 @@ import { Episodes } from "./parts/Episodes";
 import { Location } from "./parts/Location";
 import { useLocation, useParams } from "react-router-dom";
 import { Grid, Row, Col } from "react-flexbox-grid";
-import { CharacterCard } from "components";
+import { Card, CharacterCard } from "components";
 import { Navigation } from "./parts/Navigation";
 
 export const CharacterProfile = () => {
-  const { state: characterFromState } = useLocation<Character>();
+  const { state: characterFromState } = useLocation<Character | undefined>();
   const { characterId } = useParams<{ characterId: string }>();
 
   const characterQuery = useCharacter(
@@ -18,7 +18,9 @@ export const CharacterProfile = () => {
 
   const character = characterFromState || characterQuery.data;
 
-  const { originId, locationId } = getCharacterLocationIds(character);
+  const { originId, locationId } = character
+    ? getCharacterLocationIds(character)
+    : { originId: null, locationId: null };
 
   const episodes = useEpisodes(character?.episode);
   const locations = useLocations([originId, locationId]);
@@ -31,7 +33,28 @@ export const CharacterProfile = () => {
             <Col xs={16} md={8}>
               <Row>
                 <Col xs={12}>
-                  <CharacterCard data={character} style={{ margin: 0 }} />
+                  {character == null ? (
+                    <Card
+                      style={{ margin: 0, maxHeight: 260 }}
+                      height="260px"
+                      isLoading
+                    />
+                  ) : (
+                    <CharacterCard
+                      size="large"
+                      data={character}
+                      style={{ margin: 0, maxHeight: 260 }}
+                    >
+                      <Card.Section title="# Episodes">
+                        {character?.episode?.length || 0}
+                      </Card.Section>
+                      {character?.type && (
+                        <Card.Section title="Type">
+                          {character?.type}
+                        </Card.Section>
+                      )}
+                    </CharacterCard>
+                  )}
                 </Col>
                 <Col xs={12} md={6}>
                   <Location
@@ -63,8 +86,8 @@ export const CharacterProfile = () => {
 };
 
 function getCharacterLocationIds(character: Character) {
-  const originId = getLocationId(character?.origin?.url);
-  const locationId = getLocationId(character?.location?.url);
+  const originId = getLocationId(character.origin.url);
+  const locationId = getLocationId(character.location.url);
 
   return { originId, locationId };
 }

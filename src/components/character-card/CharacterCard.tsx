@@ -4,12 +4,15 @@ import { Avatar, Card, StatusIcon } from "components";
 import { CardProps } from "components/card/Card";
 
 interface CharacterCardProps extends CardProps {
-  data?: Character;
+  data: Character;
+  size?: "default" | "large";
 }
 
-export const CharacterCard = ({ data, ...props }: CharacterCardProps) => {
-  if (data == null) return <Card {...props} height="200px" isLoading />;
-
+export const CharacterCard = ({
+  data,
+  size = "default",
+  ...props
+}: React.PropsWithChildren<CharacterCardProps>) => {
   return (
     <Card
       key={data.id}
@@ -17,14 +20,16 @@ export const CharacterCard = ({ data, ...props }: CharacterCardProps) => {
       {...props}
     >
       <Card.Section>
-        <CharacterName>{data.name}</CharacterName>
+        <CharacterName $fontSize={size === "default" ? 24 : 34}>
+          {data.name}
+        </CharacterName>
         <CharacterStatus>
           <StatusIcon status={data.status} />
           {data.status} - {data.species}
         </CharacterStatus>
       </Card.Section>
-      <Card.Section title="Species">{data.species}</Card.Section>
       <Card.Section title="Gender">{data.gender}</Card.Section>
+      {props.children}
     </Card>
   );
 };
@@ -34,7 +39,8 @@ const CharacterStatus = styled.div`
   align-items: center;
 `;
 
-const CharacterName = styled.h2`
+const CharacterName = styled.h2<{ $fontSize: number }>`
   padding: 0;
   margin: 0;
+  font-size: ${(props) => props.$fontSize}px;
 `;
