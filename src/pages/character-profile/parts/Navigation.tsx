@@ -19,7 +19,7 @@ export const Navigation = () => {
   };
 
   return (
-    <Row style={{ padding: "0 8px" }}>
+    <Row style={{ padding: "0.75rem 8px 0 8px" }}>
       <Col>
         <Button
           onClick={handleGoBack}
