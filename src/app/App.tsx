@@ -12,11 +12,11 @@ const queryClient = new QueryClient();
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <Router>
+      <Router basename="/RickAndMorty">
         <Switch>
           <Route path="/characters/:characterId" component={CharacterProfile} />
           <Route path="/characters" component={CharacterList} />
-          <Redirect from="/" to="/characters" />
+          <Redirect to="/characters" />
         </Switch>
       </Router>
     </QueryClientProvider>

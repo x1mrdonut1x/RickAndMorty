@@ -2,6 +2,8 @@
 
 This project is a simple implementation of the [Rick And Mort API](https://rickandmortyapi.com)
 
+Live demo [https://x1mrdonut1x.github.io/RickAndMorty/](https://x1mrdonut1x.github.io/RickAndMorty/)
+
 ### `yarn start`
 
 Runs the app in the development mode.\
