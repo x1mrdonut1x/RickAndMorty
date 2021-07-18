@@ -15,7 +15,7 @@ export const Avatar = memo(({ src, ...props }: AvatarProps) => {
         onLoad={() => setIsLoading(false)}
         src={isLoading ? Placeholder : src}
       />
-      {isLoading && <LoadingSpinner />}
+      {isLoading && <LoadingSpinner id="image-loader" />}
     </>
   );
 });

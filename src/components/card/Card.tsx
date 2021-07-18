@@ -27,7 +27,7 @@ export const Card = ({
       $height={height}
       {...rest}
     >
-      {isLoading && <LoadingSpinner />}
+      {isLoading && <LoadingSpinner id="card-loader" />}
       {left && <ImageContainer>{left}</ImageContainer>}
       <InfoContainer>{children}</InfoContainer>
     </StyledCard>
