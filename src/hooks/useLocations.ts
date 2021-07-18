@@ -23,5 +23,9 @@ export const useLocations = (locations?: (number | null)[]) => {
   if (!Array.isArray(locationsQuery.data) && locationsQuery.data != null)
     data = [locationsQuery.data];
 
-  return { ...locationsQuery, data };
+  return {
+    ...locationsQuery,
+    data,
+    isLoading: locationsQuery.isLoading || locationsQuery.isIdle,
+  };
 };

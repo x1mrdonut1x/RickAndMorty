@@ -7,10 +7,12 @@ import { StatusIcon } from "../status-icon/StatusIcon";
 import { CardProps } from "../card/Card";
 
 interface CharacterCardProps extends CardProps {
-  data: Character;
+  data?: Character;
 }
 
 export const CharacterCard = ({ data, ...props }: CharacterCardProps) => {
+  if (data == null) return <Card {...props} height="200px" isLoading />;
+
   return (
     <Card
       key={data.id}

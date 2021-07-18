@@ -31,10 +31,7 @@ export const CharacterProfile = () => {
             <Col xs={16} md={8}>
               <Row>
                 <Col xs={12}>
-                  <CharacterCard
-                    data={character}
-                    style={{ margin: "0 0 0.75rem 0" }}
-                  />
+                  <CharacterCard data={character} style={{ margin: 0 }} />
                 </Col>
                 <Col xs={12} md={6}>
                   <Location

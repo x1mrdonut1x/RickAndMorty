@@ -22,5 +22,9 @@ export const useEpisodes = (episodes?: string[]) => {
   if (!Array.isArray(episodesQuery.data) && episodesQuery.data != null)
     data = [episodesQuery.data];
 
-  return { ...episodesQuery, data };
+  return {
+    ...episodesQuery,
+    data,
+    isLoading: episodesQuery.isLoading || episodesQuery.isIdle,
+  };
 };

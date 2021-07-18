@@ -2,27 +2,12 @@ import { Character } from "../../interfaces/Character";
 import { useQuery } from "react-query";
 import { useHistory } from "react-router-dom";
 import { CharacterCard } from "../../components";
-import Placeholder from "../../assets/placeholder.jpeg";
+import { placeholderCharacter } from "../../constants";
 
 interface CharacterResponse {
   info: any;
   results: Character[];
 }
-
-const placeholderCharacter: Character = {
-  name: "-",
-  id: 0,
-  status: "unknown",
-  species: "",
-  type: "",
-  gender: "unknown",
-  origin: { name: "unknown", url: "" },
-  location: { name: "unknown", url: "" },
-  image: Placeholder,
-  episode: [],
-  url: "",
-  created: "",
-};
 
 export function CharacterList() {
   const history = useHistory();

@@ -15,7 +15,12 @@ export const Episodes = ({ data, isLoading }: EpisodesProps) => {
     return (
       <>
         {[...Array(3).keys()].map((x) => (
-          <Card key={x} isLoading height="124px" />
+          <Card
+            key={x}
+            isLoading
+            height="124px"
+            style={{ margin: "0 0 0.74rem 0" }}
+          />
         ))}
       </>
     );
@@ -25,7 +30,7 @@ export const Episodes = ({ data, isLoading }: EpisodesProps) => {
       <ScrollBox start="xs">
         {episodeList?.map((episode, index) => (
           <Col xs={12} key={episode.id}>
-            <Card style={{ margin: '0 0 0.74rem 0'}}>
+            <Card style={{ margin: "0 0 0.74rem 0" }}>
               <Card.Section title="Name" style={{ flex: "3 1 0" }}>
                 {episode.name}
               </Card.Section>
@@ -48,7 +53,7 @@ export const Episodes = ({ data, isLoading }: EpisodesProps) => {
 };
 
 const ScrollBox = styled(Row)`
-  height: 80vh;
+  max-height: 80vh;
   overflow: auto;
   scrollbar-color: #c2c2c2 transparent;
 `;
