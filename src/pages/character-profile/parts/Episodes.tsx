@@ -28,7 +28,7 @@ export const Episodes = ({ data, isLoading }: EpisodesProps) => {
   return (
     <Grid fluid style={{ padding: 0 }}>
       <ScrollBox start="xs">
-        {episodeList?.map((episode, index) => (
+        {episodeList?.map((episode) => (
           <Col xs={12} key={episode.id}>
             <Card style={{ margin: "0 0 0.74rem 0" }}>
               <Card.Section title="Name" style={{ flex: "3 1 0" }}>
