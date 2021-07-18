@@ -15,6 +15,7 @@ export const useLocations = (locations?: (number | null)[]) => {
     {
       refetchInterval: false,
       refetchOnWindowFocus: false,
+      enabled: (locationIds?.length || []) > 0,
     }
   );
 

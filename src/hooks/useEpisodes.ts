@@ -14,6 +14,7 @@ export const useEpisodes = (episodes?: string[]) => {
     {
       refetchInterval: false,
       refetchOnWindowFocus: false,
+      enabled: (episodeIds?.length || []) > 0,
     }
   );
 

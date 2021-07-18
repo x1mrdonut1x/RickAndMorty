@@ -1,19 +1,33 @@
 import React from "react";
 import styled from "styled-components";
 import { Section } from "./parts/Section";
+import { LoadingSpinner } from "../../components";
 
-interface CardProps {
+export interface CardProps extends React.ImgHTMLAttributes<HTMLImageElement> {
   left?: any;
   onClick?: () => void;
+  width?: string;
+  height?: string;
+  isLoading?: boolean;
 }
 
 export const Card = ({
   left,
   children,
   onClick,
+  width,
+  height,
+  isLoading,
+  ...rest
 }: React.PropsWithChildren<CardProps>) => {
   return (
-    <StyledCard {...(onClick ? { onClick, $clickable: true } : {})}>
+    <StyledCard
+      {...(onClick ? { onClick, $clickable: true } : {})}
+      $width={width}
+      $height={height}
+      {...rest}
+    >
+      {isLoading && <LoadingSpinner />}
       {left && <ImageContainer>{left}</ImageContainer>}
       <InfoContainer>{children}</InfoContainer>
     </StyledCard>
@@ -22,9 +36,15 @@ export const Card = ({
 
 Card.Section = Section;
 
-const StyledCard = styled.article<{ $clickable?: boolean }>`
+const StyledCard = styled.article<{
+  $clickable?: boolean;
+  $width?: string;
+  $height?: string;
+}>`
+  position: relative;
   display: flex;
-  flex: 0 1 380px;
+  flex: 0 1 ${(props) => props.$width || "auto"};
+  ${(props) => "height: " + props.$height};
   overflow: hidden;
   background: rgb(60, 62, 68) none repeat scroll 0% 0%;
   border-radius: 0.5rem;
@@ -42,6 +62,7 @@ const StyledCard = styled.article<{ $clickable?: boolean }>`
 `;
 
 const ImageContainer = styled.div`
+  position: relative;
   flex: 2 1 0%;
   width: 100%;
 `;

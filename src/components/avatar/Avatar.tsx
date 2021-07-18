@@ -1,8 +1,24 @@
+import { useState, memo } from "react";
 import styled from "styled-components";
+import Placeholder from "../../assets/placeholder.jpeg";
+import { LoadingSpinner } from "../loading-spinner/LoadingSpinner";
 
-export const Avatar = (props: React.ImgHTMLAttributes<HTMLImageElement>) => {
-  return <StyledAvatar {...props} />;
-};
+interface AvatarProps extends React.ImgHTMLAttributes<HTMLImageElement> {}
+
+export const Avatar = memo(({ src, ...props }: AvatarProps) => {
+  const [isLoading, setIsLoading] = useState(true);
+
+  return (
+    <>
+      <StyledAvatar
+        {...props}
+        onLoad={() => setIsLoading(false)}
+        src={isLoading ? Placeholder : src}
+      />
+      {isLoading && <LoadingSpinner />}
+    </>
+  );
+});
 
 const StyledAvatar = styled.img`
   width: 100%;

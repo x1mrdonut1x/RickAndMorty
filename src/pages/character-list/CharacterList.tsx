@@ -1,13 +1,28 @@
-import { Avatar, Card, StatusIcon } from "../../components";
 import { Character } from "../../interfaces/Character";
 import { useQuery } from "react-query";
 import { useHistory } from "react-router-dom";
-import styled from "styled-components";
+import { CharacterCard } from "../../components";
+import Placeholder from "../../assets/placeholder.jpeg";
 
 interface CharacterResponse {
   info: any;
   results: Character[];
 }
+
+const placeholderCharacter: Character = {
+  name: "-",
+  id: 0,
+  status: "unknown",
+  species: "",
+  type: "",
+  gender: "unknown",
+  origin: { name: "unknown", url: "" },
+  location: { name: "unknown", url: "" },
+  image: Placeholder,
+  episode: [],
+  url: "",
+  created: "",
+};
 
 export function CharacterList() {
   const history = useHistory();
@@ -27,32 +42,25 @@ export function CharacterList() {
     <div
       style={{ display: "flex", flexWrap: "wrap", justifyContent: "center" }}
     >
-      {characterQuery.data?.results.map((character) => (
-        <Card
-          key={character.id}
-          left={<Avatar src={character.image} alt={character.name} />}
-          onClick={() => handleGoToCharacter(character)}
-        >
-          <Card.Section>
-            <CharacterName>{character.name}</CharacterName>
-            <CharacterStatus>
-              <StatusIcon status={character.status} />
-              {character.status} - {character.species}
-            </CharacterStatus>
-          </Card.Section>
-          <Card.Section title="Species">{character.species}</Card.Section>
-        </Card>
-      ))}
+      {characterQuery.isLoading
+        ? [...Array(20).keys()].map((x) => (
+            <CharacterCard
+              isLoading
+              key={x}
+              data={placeholderCharacter}
+              // onClick={() => handleGoToCharacter(character)}
+              width="380px"
+              height="184px"
+            />
+          ))
+        : characterQuery.data?.results.map((character) => (
+            <CharacterCard
+              key={character.id}
+              data={character}
+              onClick={() => handleGoToCharacter(character)}
+              width="380px"
+            />
+          ))}
     </div>
   );
 }
-
-const CharacterStatus = styled.div`
-  display: flex;
-  align-items: center;
-`;
-
-const CharacterName = styled.h2`
-  padding: 0;
-  margin: 0;
-`;
