@@ -1,10 +1,7 @@
-import React from "react";
 import styled from "styled-components";
-import { Character } from "../../interfaces/Character";
-import { Avatar } from "../avatar/Avatar";
-import { Card } from "../card/Card";
-import { StatusIcon } from "../status-icon/StatusIcon";
-import { CardProps } from "../card/Card";
+import { Character } from "interfaces/Character";
+import { Avatar, Card, StatusIcon } from "components";
+import { CardProps } from "components/card/Card";
 
 interface CharacterCardProps extends CardProps {
   data?: Character;

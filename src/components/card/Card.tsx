@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Section } from "./parts/Section";
-import { LoadingSpinner } from "../../components";
+import { LoadingSpinner } from "components";
 
 export interface CardProps extends React.ImgHTMLAttributes<HTMLImageElement> {
   left?: any;

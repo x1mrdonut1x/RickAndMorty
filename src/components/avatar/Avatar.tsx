@@ -1,7 +1,7 @@
 import { useState, memo } from "react";
 import styled from "styled-components";
-import Placeholder from "../../assets/placeholder.jpeg";
-import { LoadingSpinner } from "../loading-spinner/LoadingSpinner";
+import Placeholder from "assets/placeholder.jpeg";
+import { LoadingSpinner } from "components";
 
 interface AvatarProps extends React.ImgHTMLAttributes<HTMLImageElement> {}
 

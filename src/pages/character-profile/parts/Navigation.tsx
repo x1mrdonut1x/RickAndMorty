@@ -1,5 +1,5 @@
 import { useHistory, useParams } from "react-router-dom";
-import { Button } from "../../../components";
+import { Button } from "components";
 import { Row, Col } from "react-flexbox-grid";
 
 export const Navigation = () => {

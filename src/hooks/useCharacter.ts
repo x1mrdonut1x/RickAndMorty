@@ -1,5 +1,5 @@
 import { useQuery } from "react-query";
-import { Character } from "../interfaces/Character";
+import { Character } from "interfaces/Character";
 
 export const useCharacter = (characterId?: number | string) => {
   const characterQuery = useQuery<Character>(

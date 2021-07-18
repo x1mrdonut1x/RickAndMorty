@@ -1,6 +1,6 @@
 import { useQuery } from "react-query";
-import { Episode } from "../interfaces/Episode";
-import { getEpisodeIds } from "../utils";
+import { Episode } from "interfaces/Episode";
+import { getEpisodeIds } from "utils";
 
 export const useEpisodes = (episodes?: string[]) => {
   const episodeIds = getEpisodeIds(episodes);

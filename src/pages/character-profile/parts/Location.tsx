@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { Card } from "../../../components";
-import { Location as LocationInterface } from "../../../interfaces/Location";
+import { Card } from "components";
+import { Location as LocationInterface } from "interfaces/Location";
 
 interface LocationProps {
   data?: LocationInterface;

@@ -1,5 +1,5 @@
 import { Character } from "interfaces/Character";
-import Placeholder from "../assets/placeholder.jpeg";
+import Placeholder from "assets/placeholder.jpeg";
 
 export const placeholderCharacter: Character = {
   name: "-",

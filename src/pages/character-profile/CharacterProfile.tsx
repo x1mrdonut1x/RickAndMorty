@@ -1,11 +1,11 @@
-import { useLocations, useEpisodes, useCharacter } from "../../hooks";
-import { Character } from "../../interfaces/Character";
-import { getLocationId } from "../../utils";
+import { useLocations, useEpisodes, useCharacter } from "hooks";
+import { Character } from "interfaces/Character";
+import { getLocationId } from "utils";
 import { Episodes } from "./parts/Episodes";
 import { Location } from "./parts/Location";
 import { useLocation, useParams } from "react-router-dom";
 import { Grid, Row, Col } from "react-flexbox-grid";
-import { CharacterCard } from "../../components/character-card/CharacterCard";
+import { CharacterCard } from "components";
 import { Navigation } from "./parts/Navigation";
 
 export const CharacterProfile = () => {

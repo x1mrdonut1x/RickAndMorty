@@ -1,5 +1,5 @@
 import { useQuery } from "react-query";
-import { Location } from "../interfaces/Location";
+import { Location } from "interfaces/Location";
 
 export const useLocations = (locations?: (number | null)[]) => {
   const locationIds = locations?.filter(

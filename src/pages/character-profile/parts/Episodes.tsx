@@ -1,5 +1,5 @@
-import { Card } from "../../../components";
-import { Episode } from "../../../interfaces/Episode";
+import { Card } from "components";
+import { Episode } from "interfaces/Episode";
 import { Grid, Row, Col } from "react-flexbox-grid";
 import styled from "styled-components";
 

@@ -1,5 +1,5 @@
 import { QueryClient, QueryClientProvider } from "react-query";
-import { CharacterProfile, CharacterList } from "../pages";
+import { CharacterProfile, CharacterList } from "pages";
 import {
   BrowserRouter as Router,
   Route,

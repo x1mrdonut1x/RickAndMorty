@@ -1,7 +1,7 @@
-import { Character } from "../../interfaces/Character";
+import { Character } from "interfaces/Character";
 import { useQuery } from "react-query";
 import { useHistory } from "react-router-dom";
-import { CharacterCard } from "../../components";
+import { CharacterCard } from "components";
 import { placeholderCharacter } from "../../constants";
 
 interface CharacterResponse {
