@@ -25,6 +25,5 @@ export const useEpisodes = (episodes?: string[]) => {
   return {
     ...episodesQuery,
     data,
-    isLoading: episodesQuery.isLoading || episodesQuery.isIdle,
   };
 };

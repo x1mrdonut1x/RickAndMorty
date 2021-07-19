@@ -3,7 +3,7 @@ import { Location } from "interfaces/Location";
 
 export const useLocations = (locations?: (number | null)[]) => {
   const locationIds = locations?.filter(
-    (item, pos) => locations.indexOf(item) === pos
+    (item, pos) => item && locations.indexOf(item) === pos
   );
 
   const locationsQuery = useQuery<Location[]>(
@@ -26,6 +26,5 @@ export const useLocations = (locations?: (number | null)[]) => {
   return {
     ...locationsQuery,
     data,
-    isLoading: locationsQuery.isLoading || locationsQuery.isIdle,
   };
 };
