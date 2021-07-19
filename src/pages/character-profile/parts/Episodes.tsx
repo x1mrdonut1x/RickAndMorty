@@ -14,7 +14,7 @@ export const Episodes = React.memo(({ data, isLoading }: EpisodesProps) => {
 
   if (isLoading)
     return (
-      <div style={{ height: "80vh" }}>
+      <div style={{ height: "65vh" }}>
         {[...Array(3).keys()].map((x) => (
           <Card
             key={x}
@@ -54,7 +54,7 @@ export const Episodes = React.memo(({ data, isLoading }: EpisodesProps) => {
 });
 
 const ScrollBox = styled(Row)`
-  max-height: 80vh;
+  max-height: 65vh;
   overflow: auto;
   scrollbar-color: #c2c2c2 transparent;
 `;

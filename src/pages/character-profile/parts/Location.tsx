@@ -11,7 +11,6 @@ interface LocationProps {
 
 export const Location = React.memo(
   ({ data, title, isLoading }: LocationProps) => {
-    console.log(isLoading)
     return (
       <Card
         style={{ margin: "0.75rem 0 0 0" }}
