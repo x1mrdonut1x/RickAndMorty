@@ -1,13 +1,14 @@
 import { StatusType } from "interfaces/Character";
+import React from "react";
 import styled from "styled-components";
 
 interface StatusIconProps {
   status: StatusType;
 }
 
-export const StatusIcon = ({ status }: StatusIconProps) => {
+export const StatusIcon = React.memo(({ status }: StatusIconProps) => {
   return <Icon $color={getStatusColor(status)} />;
-};
+});
 
 const Icon = styled.span<{ $color: string }>`
   height: 0.5rem;

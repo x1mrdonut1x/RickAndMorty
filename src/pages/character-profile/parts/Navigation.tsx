@@ -1,8 +1,10 @@
 import { useHistory, useParams } from "react-router-dom";
 import { Button } from "components";
 import { Row, Col } from "react-flexbox-grid";
+import styled from "styled-components";
+import React from "react";
 
-export const Navigation = () => {
+export const Navigation = React.memo(() => {
   const { characterId } = useParams<{ characterId: string }>();
   const history = useHistory();
 
@@ -21,31 +23,25 @@ export const Navigation = () => {
   return (
     <Row style={{ padding: "0.75rem 8px 0 8px" }}>
       <Col>
-        <Button
-          onClick={handleGoBack}
-          style={{ marginRight: "0.75rem", marginBottom: "0.75rem" }}
-        >
-          Back
-        </Button>
+        <StyledButton onClick={handleGoBack}>Back</StyledButton>
       </Col>
       <Col>
         {+characterId > 1 && (
-          <Button
-            onClick={handleGoToPrevCharacter}
-            style={{ marginRight: "0.75rem", marginBottom: "0.75rem" }}
-          >
+          <StyledButton onClick={handleGoToPrevCharacter}>
             Previous Character
-          </Button>
+          </StyledButton>
         )}
       </Col>
       <Col>
-        <Button
-          onClick={handleGoToNextCharacter}
-          style={{ marginRight: "0.75rem", marginBottom: "0.75rem" }}
-        >
+        <StyledButton onClick={handleGoToNextCharacter}>
           Next Character
-        </Button>
+        </StyledButton>
       </Col>
     </Row>
   );
-};
+});
+
+const StyledButton = styled(Button)`
+  margin-right: 0.75rem;
+  margin-bottom: 0.75rem;
+`;

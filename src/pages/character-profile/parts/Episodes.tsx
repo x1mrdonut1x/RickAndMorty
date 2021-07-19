@@ -1,5 +1,6 @@
 import { Card } from "components";
 import { Episode } from "interfaces/Episode";
+import React from "react";
 import { Grid, Row, Col } from "react-flexbox-grid";
 import styled from "styled-components";
 
@@ -8,7 +9,7 @@ interface EpisodesProps {
   isLoading?: boolean;
 }
 
-export const Episodes = ({ data, isLoading }: EpisodesProps) => {
+export const Episodes = React.memo(({ data, isLoading }: EpisodesProps) => {
   const episodeList = Array.isArray(data) ? data : data != null ? [data] : [];
 
   if (isLoading)
@@ -50,7 +51,7 @@ export const Episodes = ({ data, isLoading }: EpisodesProps) => {
       </ScrollBox>
     </Grid>
   );
-};
+});
 
 const ScrollBox = styled(Row)`
   max-height: 80vh;

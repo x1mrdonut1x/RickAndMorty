@@ -1,11 +1,12 @@
+import React from "react";
 import styled from "styled-components";
 
 interface LoadingSpinnerProps
   extends React.HtmlHTMLAttributes<HTMLDivElement> {}
 
-export const LoadingSpinner = (props: LoadingSpinnerProps) => {
+export const LoadingSpinner = React.memo((props: LoadingSpinnerProps) => {
   return <Spinner {...props}></Spinner>;
-};
+});
 
 const Spinner = styled.div`
   position: absolute;
