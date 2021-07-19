@@ -7,6 +7,7 @@ import { useLocation, useParams } from "react-router-dom";
 import { Grid, Row, Col } from "react-flexbox-grid";
 import { Card, CharacterCard } from "components";
 import { Navigation } from "./parts/Navigation";
+import styled from "styled-components";
 
 export const CharacterProfile = () => {
   const { state: characterFromState } = useLocation<Character | undefined>();
@@ -26,8 +27,11 @@ export const CharacterProfile = () => {
   const locations = useLocations([originId, locationId]);
 
   return (
-    <Grid fluid>
-      <Row center="xs" middle="xs" style={{ height: "100vh" }}>
+    <Wrapper fluid>
+      <Row center="xs" middle="xs">
+        <Col xs={16} md={12} lg={10} xl={8}>
+          <Navigation />
+        </Col>
         <Col xs={16} md={12} lg={10} xl={8}>
           <Row start="xs">
             <Col xs={16} md={8}>
@@ -35,7 +39,10 @@ export const CharacterProfile = () => {
                 <Col xs={12}>
                   {character == null ? (
                     <Card
-                      style={{ margin: 0, maxHeight: 260 }}
+                      style={{
+                        margin: 0,
+                        marginBottom: "0.75rem",
+                      }}
                       height="260px"
                       isLoading
                     />
@@ -43,7 +50,11 @@ export const CharacterProfile = () => {
                     <CharacterCard
                       size="large"
                       data={character}
-                      style={{ margin: 0, maxHeight: 260 }}
+                      style={{
+                        margin: 0,
+                        marginBottom: "0.75rem",
+                      }}
+                      height="260px"
                     >
                       <Card.Section title="# Episodes">
                         {character?.episode?.length || 0}
@@ -70,20 +81,33 @@ export const CharacterProfile = () => {
                     data={locations.data?.find((x) => x.id === originId)}
                   />
                 </Col>
-                <Col xs={12} first="xs" last="md">
-                  <Navigation />
-                </Col>
               </Row>
             </Col>
             <Col xs={12} md={4}>
-              <Episodes isLoading={episodes.isLoading} data={episodes.data} />
+              <Episodes
+                isLoading={episodes.isLoading || episodes.isIdle}
+                data={episodes.data}
+              />
             </Col>
           </Row>
         </Col>
       </Row>
-    </Grid>
+    </Wrapper>
   );
 };
+
+const Wrapper = styled(Grid)`
+  @media (min-width: 768px) {
+    margin-top: 0;
+  }
+  @media (min-width: 992px) {
+    margin-top: 5vh;
+  }
+
+  @media (min-width: 1200px) {
+    margin-top: 10vh;
+  }
+`;
 
 function getCharacterLocationIds(character: Character) {
   const originId = getLocationId(character.origin.url);

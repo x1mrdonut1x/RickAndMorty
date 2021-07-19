@@ -13,7 +13,7 @@ export const Location = React.memo(
   ({ data, title, isLoading }: LocationProps) => {
     return (
       <Card
-        style={{ margin: "0.75rem 0 0 0" }}
+        style={{ margin: "0 0 0.75rem 0" }}
         isLoading={isLoading}
         {...(isLoading ? { height: "236px" } : {})}
       >
