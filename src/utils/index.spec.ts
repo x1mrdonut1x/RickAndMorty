@@ -1,4 +1,4 @@
-import { getEpisodeIds, getLocationId, getLocationIds } from ".";
+import { getEpisodeIds, getLocationId, getLocationIds, makeArray } from ".";
 
 describe("getEpisodeIds", () => {
   it("get basic ids", () => {
@@ -66,6 +66,32 @@ describe("getLocationIds", () => {
     ];
 
     const result = getLocationIds(locationsList);
+
+    expect(result).toMatchObject([1]);
+  });
+});
+
+describe("makeArray", () => {
+  it("returns same array", () => {
+    const data = [1, 2, 3];
+
+    const result = makeArray(data);
+
+    expect(result).toMatchObject([1, 2, 3]);
+  });
+
+  it("returns empty array", () => {
+    const data = undefined;
+
+    const result = makeArray(data);
+
+    expect(result).toMatchObject([]);
+  });
+
+  it("returns array", () => {
+    const data = 1;
+
+    const result = makeArray(data);
 
     expect(result).toMatchObject([1]);
   });

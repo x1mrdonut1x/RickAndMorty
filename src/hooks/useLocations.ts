@@ -1,7 +1,9 @@
 import { useQuery } from "react-query";
 import { Location } from "interfaces/Location";
+import { makeArray } from "utils";
 
 export const useLocations = (locations?: (number | null)[]) => {
+  // remove duplicated and empty values
   const locationIds = locations?.filter(
     (item, pos) => item && locations.indexOf(item) === pos
   );
@@ -19,9 +21,8 @@ export const useLocations = (locations?: (number | null)[]) => {
     }
   );
 
-  let data = locationsQuery.data || [];
-  if (!Array.isArray(locationsQuery.data) && locationsQuery.data != null)
-    data = [locationsQuery.data];
+  // if value not array, return array
+  const data = makeArray(locationsQuery.data);
 
   return {
     ...locationsQuery,

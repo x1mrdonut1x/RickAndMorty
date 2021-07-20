@@ -1,6 +1,6 @@
 # Rick and Morty API
 
-This project is a simple implementation of the [Rick And Mort API](https://rickandmortyapi.com)
+This project is a simple implementation of the [Rick And Morty API](https://rickandmortyapi.com)
 
 Live demo [https://x1mrdonut1x.github.io/RickAndMorty/](https://x1mrdonut1x.github.io/RickAndMorty/)
 
@@ -15,4 +15,3 @@ You will also see any lint errors in the console.
 ### `yarn test`
 
 Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.

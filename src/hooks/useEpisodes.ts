@@ -1,6 +1,6 @@
 import { useQuery } from "react-query";
 import { Episode } from "interfaces/Episode";
-import { getEpisodeIds } from "utils";
+import { getEpisodeIds, makeArray } from "utils";
 
 export const useEpisodes = (episodes?: string[]) => {
   const episodeIds = getEpisodeIds(episodes);
@@ -18,9 +18,8 @@ export const useEpisodes = (episodes?: string[]) => {
     }
   );
 
-  let data = episodesQuery.data || [];
-  if (!Array.isArray(episodesQuery.data) && episodesQuery.data != null)
-    data = [episodesQuery.data];
+  // if value not array, return array
+  const data = makeArray(episodesQuery.data);
 
   return {
     ...episodesQuery,

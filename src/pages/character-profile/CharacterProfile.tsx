@@ -1,6 +1,6 @@
 import { useLocations, useEpisodes, useCharacter } from "hooks";
 import { Character } from "interfaces/Character";
-import { getLocationId } from "utils";
+import { getCharacterLocationIds } from "utils";
 import { Episodes } from "./parts/Episodes";
 import { Location } from "./parts/Location";
 import { useLocation, useParams } from "react-router-dom";
@@ -19,9 +19,7 @@ export const CharacterProfile = () => {
 
   const character = characterFromState || characterQuery.data;
 
-  const { originId, locationId } = character
-    ? getCharacterLocationIds(character)
-    : { originId: null, locationId: null };
+  const { originId, locationId } = getCharacterLocationIds(character);
 
   const episodes = useEpisodes(character?.episode);
   const locations = useLocations([originId, locationId]);
@@ -100,6 +98,7 @@ const Wrapper = styled(Grid)`
   @media (min-width: 768px) {
     margin-top: 0;
   }
+
   @media (min-width: 992px) {
     margin-top: 5vh;
   }
@@ -108,10 +107,3 @@ const Wrapper = styled(Grid)`
     margin-top: 10vh;
   }
 `;
-
-function getCharacterLocationIds(character: Character) {
-  const originId = getLocationId(character.origin.url);
-  const locationId = getLocationId(character.location.url);
-
-  return { originId, locationId };
-}
